@@ -1,0 +1,53 @@
+#:kivy 1.11.1
+
+<PongGame>:
+    # Liga as variáveis no Python com os elementos do .kv
+    ball: pong_ball
+    player1: pong_player1
+    player2: pong_player2
+
+    canvas:
+        # Fundo do jogo - preto
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    # Bola
+    PongBall:
+        id: pong_ball
+        size: 50, 50
+        center: root.center
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1
+            Ellipse:
+                pos: self.pos
+                size: self.size
+
+    # Raquete do Jogador 1
+    PongPaddle:
+        id: pong_player1
+        x: root.x
+        center_y: root.center_y
+        size: 25, 200
+        canvas:
+            Color:
+                rgba: 1, 0.2, 0.2, 1  # vermelho claro
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+    # Raquete do Jogador 2
+    PongPaddle:
+        id: pong_player2
+        right: root.width  # <-- lado direito da tela
+        center_y: root.center_y
+        size: 25, 200
+        canvas:
+            Color:
+                rgba: 0.2, 0.2, 1, 1  # azul claro
+            Rectangle:
+                size: self.size
+                pos: self.pos
